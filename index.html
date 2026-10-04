@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>噪音警报器 · Noise Alarm</title>
+  <meta name="description" content="麦克风实时测噪，超过设定分贝阈值即报警 / Real-time microphone noise alarm" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%8A%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <header class="hd">
+      <h1>🔊 噪音警报器 <span class="en">Noise Alarm</span></h1>
+      <p class="sub">麦克风实时测噪 · 超阈值报警 / Real-time mic noise monitor</p>
+    </header>
+
+    <section class="setup">
+      <label class="field">
+        <span>分贝阈值 / Threshold (dB)</span>
+        <input id="threshold" type="number" value="70" min="0" max="130" step="1" inputmode="numeric" />
+      </label>
+
+      <div class="toggles">
+        <label class="switch"><input id="soundOn" type="checkbox" checked /> <span>声音警报 / Sound</span></label>
+        <label class="switch"><input id="notifyOn" type="checkbox" /> <span>桌面通知 / Notify</span></label>
+      </div>
+
+      <div class="btns">
+        <button id="startBtn" class="primary">▶ 开始监测 / Start</button>
+        <button id="testBtn" class="ghost">测试警报 / Test</button>
+      </div>
+    </section>
+
+    <section class="meter">
+      <div class="readout">
+        <span id="dbVal">--</span><span class="unit">dB</span>
+        <span id="status" class="status">待机 / Idle</span>
+      </div>
+      <div class="bar">
+        <div id="barFill" class="bar-fill"></div>
+        <div id="thrMark" class="thr-mark"></div>
+      </div>
+      <div class="scale"><span>0</span><span>130</span></div>
+      <div class="extra">
+        峰值 / Peak: <b id="peakVal">--</b> dB
+        &nbsp;·&nbsp; 校准偏移 / Offset: <b id="offVal">94</b> dB
+      </div>
+    </section>
+
+    <section class="calib">
+      <p class="calib-note">校准 / Calibration：浏览器麦克风只能测相对音量，无法给出绝对分贝。请用真实分贝计对照后校准，否则数值仅供参考。</p>
+      <div class="calib-row">
+        <input id="calibInput" type="number" placeholder="已知分贝 e.g. 60" inputmode="numeric" />
+        <button id="calibBtn" class="ghost">以此为准 / Set</button>
+        <button id="calibReset" class="ghost">复位 / Reset</button>
+      </div>
+    </section>
+
+    <footer class="ft">
+      <p>⚠️ 仅作环境噪音提醒用途，非计量器具。/ For ambient alerting only, not a calibrated meter.</p>
+    </footer>
+  </main>
+
+  <div id="alarm" class="alarm hidden">
+    <div class="alarm-inner">
+      <div class="alarm-icon">⚠️</div>
+      <div class="alarm-text">噪音超标！<span class="en">NOISE OVER LIMIT!</span></div>
+      <div class="alarm-db"><span id="alarmDb">--</span> dB</div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
