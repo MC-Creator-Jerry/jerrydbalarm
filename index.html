@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>噪音警报器 · Noise Alarm</title>
   <meta name="description" content="麦克风实时测噪，超过设定分贝阈值即报警 / Real-time microphone noise alarm" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%8A%3C/text%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="style.css?v=20261019a" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css?v=20261019e" />
 </head>
 <body>
   <main class="card">
     <header class="hd">
-      <h1>🔊 噪音警报器 <span class="en">Noise Alarm</span></h1>
+      <h1><i class="ic" data-ic="volume" aria-hidden="true"></i> 噪音警报器 <span class="en">Noise Alarm</span></h1>
       <p class="sub">麦克风实时测噪 · 超阈值报警 / Real-time mic noise monitor</p>
     </header>
 
@@ -58,20 +58,20 @@
     </section>
 
     <footer class="ft">
-      <p>⚠️ 仅作环境噪音提醒用途，非计量器具。/ For ambient alerting only, not a calibrated meter.</p>
+      <p><i class="ic" data-ic="alert" aria-hidden="true"></i> 仅作环境噪音提醒用途，非计量器具。/ For ambient alerting only, not a calibrated meter.</p>
     </footer>
   </main>
 
   <div id="alarm" class="alarm hidden">
     <div class="alarm-inner">
-      <div class="alarm-icon">⚠️</div>
+      <div class="alarm-icon"><i class="ic" data-ic="alert" aria-hidden="true"></i></div>
       <div class="alarm-text">噪音超标！<span class="en">NOISE OVER LIMIT!</span></div>
       <div class="alarm-db"><span id="alarmDb">--</span> dB</div>
-      <button id="ackBtn" class="alarm-ack">🔕 知道了 / Acknowledge</button>
+      <button id="ackBtn" class="alarm-ack"><i class="ic" data-ic="bell-off" aria-hidden="true"></i> 知道了 / Acknowledge</button>
       <p class="alarm-hint">点击可静音本次；环境安静后将自动重新布防。</p>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20261019e"></script>
 </body>
 </html>
